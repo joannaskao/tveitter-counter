@@ -10,6 +10,7 @@ Track a Twitter user's follower count over time. Produces a CSV with a timestamp
 
 #### Directions
 First, let's set up the script.
+
 1. Create a [RVM gemset](https://rvm.io/gemsets/creating). You will need a specify a gemset when you set up your cron job. (e.g. `rvm use 2.2.1@tveiter-counter --create`)
 2. In `script.rb`, copy and paste your consumer key, consumer secret, access token and access secret from the app you created on the Twitter developer dashboard into *lines 7-10*. Don't share these values.
 3. On line 25 of `script.rb`, replace path/to/output.csv with the location of where you want your data dumped. A path from your home folder is recommended (e.g. absolute file path).
@@ -21,6 +22,7 @@ First, let's set up the script.
 At this point, you should be able to run your shell script. You can test your work by running `sh tveiter-counter-cron.sh` in the folder where your file is located.
 
 If that works, we can move on to writing a cron job so that your machine automatically runs the script at a regular interval.
+
 1. To edit your list of cron jobs, run `crontab -e` from any directory on your machine.
 2. You'll want to run your script approximately once every other minute or less frequently. The Twitter API restricts you to 15 calls every 15 minutes. Add `*/2 * * * * /path/to/twitter-tracker-cron.sh` to your crontab file with your specific path to the `twitter-tracker-cron.sh` file.
 
